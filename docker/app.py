@@ -67,19 +67,19 @@ for service in services:
     replicas = mode.get('Replicated', {}).get('Replicas', 'нет')
 
     last_update = service_info['UpdatedAt']
-    last_update_truncated = last_update[:26] + 'Z'
-    last_update_dt = datetime.fromisoformat(last_update_truncated[:-1])
-    time_difference = current_time - last_update_dt
-    days = time_difference.days
-    hours, remainder = divmod(time_difference.seconds, 3600)
-    minutes, _ = divmod(remainder, 60)
-    last_update_formatted = f"{days} дн. {hours} ч. {minutes} мин."
+    # last_update_truncated = last_update[:26] + 'Z'
+    # last_update_dt = datetime.fromisoformat(last_update_truncated[:-1])
+    # time_difference = current_time - last_update_dt
+    # days = time_difference.days
+    # hours, remainder = divmod(time_difference.seconds, 3600)
+    # minutes, _ = divmod(remainder, 60)
+    # last_update_formatted = f"{days} дн. {hours} ч. {minutes} мин."
 
     # Добавляем цвет, если прошло менее 24 часов
-    if days < 1:
-        last_update_formatted = f"{Fore.GREEN}{last_update_formatted}{Style.RESET_ALL}"
-    else:
-        last_update_formatted = f"{Fore.RED}{last_update_formatted}{Style.RESET_ALL}"
+    # if days < 1:
+    #     last_update_formatted = f"{Fore.GREEN}{last_update_formatted}{Style.RESET_ALL}"
+    # else:
+    #     last_update_formatted = f"{Fore.RED}{last_update_formatted}{Style.RESET_ALL}"
 
     service_type = 'other'
     for group, patterns in service_groups.items():
@@ -99,7 +99,7 @@ for service in services:
         memory_limit, 
         healthcheck_status, 
         replicas, 
-        last_update_formatted,
+        # last_update_formatted,
         formatted_ips
     ])
 
